@@ -1,4 +1,4 @@
-The entry point for your Redis implementation is in `src/main.rs`.
+The entry point for your Docker implementation is in `src/main.rs`.
 
 Study and uncomment the relevant code: 
 

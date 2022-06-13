@@ -1,4 +1,4 @@
-The entry point for your Redis implementation is in `app/main.c`.
+The entry point for your Docker implementation is in `app/main.c`.
 
 Study and uncomment the relevant code: 
 
