@@ -9,24 +9,12 @@ struct Main {
         print("Logs from your program will appear here!")
 
         // Uncomment this block to pass the first stage!
-        // let process = Process()
         // let command = CommandLine.arguments[3]
         // let arguments = CommandLine.arguments.dropFirst(4).map { String($0) }
-        // #if canImport(Darwin)
-        //     if #available(macOS 10.13, *) {
-        //         process.executableURL = URL(fileURLWithPath: command)
-        //         process.arguments = arguments
-        //         try process.run()
-        //     } else {
-        //         process.launchPath = command
-        //         process.arguments = arguments
-        //         process.launch()
-        //     }
-        // #else
-        //     process.executableURL = URL(fileURLWithPath: command)
-        //     process.arguments = arguments
-        //     try process.run()
-        // #endif
+        // let process = Process()
+        // process.executableURL = URL(fileURLWithPath: command)
+        // process.arguments = arguments
+        // try process.run()
         // process.waitUntilExit()
         // guard process.terminationStatus == .zero, let output = process.standardOutput as? String else {
         //     exit(1)
