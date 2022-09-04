@@ -5,4 +5,6 @@
 # CodeCrafters uses this file to test your code. Don't make any changes here!
 #
 # DON'T EDIT THIS!
-swift run -c release swift-docker-challenge "$@"
+set -e
+swift build -c release > /dev/null
+exec swift run -c release --skip-build swift-docker-challenge "$@"
