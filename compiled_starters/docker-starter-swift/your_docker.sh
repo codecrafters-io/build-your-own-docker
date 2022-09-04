@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # DON'T EDIT THIS!
 #
@@ -6,5 +6,9 @@
 #
 # DON'T EDIT THIS!
 set -e
-swift build -c release > /dev/null
+set -o pipefail
+
+# Swift build writes errors to stdout instead of stderr. Let's collect all output in a file and only print if the exit code is zero.
+buildOutputFile=$(mktemp)
+swift build -c release > "$buildOutputFile" || (cat "$buildOutputFile" && exit 1)
 exec swift run -c release --skip-build swift-docker-challenge "$@"
