@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	 "os"
-	 "os/exec"
+	"os"
+	"os/exec"
 )
 
 // Usage: your_docker.sh run <image> <command> <arg1> <arg2> ...

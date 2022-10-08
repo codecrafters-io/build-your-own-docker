@@ -4,8 +4,8 @@ Study and uncomment the relevant code:
 
 ```go
 // Uncomment this block to pass the first stage!
- "os"
- "os/exec"
+"os"
+"os/exec"
 ```
 
 ```go
