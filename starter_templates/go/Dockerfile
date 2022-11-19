@@ -10,4 +10,6 @@ RUN chmod +x /usr/local/bin/docker-explorer
 ADD . /app
 WORKDIR /app
 
+RUN sed -i -e 's/\r$//' /app/your_docker.sh
+
 ENTRYPOINT ["/app/your_docker.sh"]

@@ -19,4 +19,6 @@ RUN cargo clean -p docker-starter-rust --release --target-dir=/tmp/codecrafters-
 # Grab the real code
 ADD . /app
 
+RUN sed -i -e 's/\r$//' /app/your_docker.sh
+
 ENTRYPOINT ["/app/your_docker.sh"]
