@@ -1,4 +1,24 @@
-@@ -19,50 +19,54 @@
+@@ -1,68 +1,74 @@
++//go:build linux
++
+ package main
+
+ import (
+ 	"fmt"
+ 	"io"
+ 	"io/ioutil"
+ 	"os"
+ 	"os/exec"
+ 	"path"
+ 	"syscall"
+ )
+
+ // Usage: your_docker.sh run <image> <command> <arg1> <arg2> ...
+ func main() {
+ 	command := os.Args[3]
+ 	args := os.Args[4:len(os.Args)]
+
+ 	chrootDir, err := ioutil.TempDir("", "")
  	if err != nil {
  		fmt.Printf("error creating chroot dir: %v", err)
  		os.Exit(1)
