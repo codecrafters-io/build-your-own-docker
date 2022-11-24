@@ -1,5 +1,6 @@
-@@ -1,68 +1,73 @@
-+// go:build linux
+@@ -1,68 +1,74 @@
++//go:build linux
++
  package main
 
  import (
