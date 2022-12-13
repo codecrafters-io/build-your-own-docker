@@ -103,3 +103,19 @@
   template_attributes:
     required_executable: "swift"
     user_editable_file: "Sources/swift-docker-challenge/Main.swift"
+
+- language: ruby
+  file_mappings:
+    - source: starter_templates/README.md
+      target: README.md
+    - source: starter_templates/codecrafters.yml
+      target: codecrafters.yml
+    - source: starter_templates/ruby/app/main.rb
+      target: app/main.rb
+    - source: starter_templates/ruby/Dockerfile
+      target: Dockerfile
+    - source: starter_templates/ruby/your_docker.sh
+      target: your_docker.sh
+  template_attributes:
+    required_executable: "ruby (2.7)"
+    user_editable_file: "app/main.rb"
