@@ -62,6 +62,22 @@
     required_executable: "nim (1.0)"
     user_editable_file: "app/main.nim"
 
+- language: python
+  file_mappings:
+    - source: starter_templates/README.md
+      target: README.md
+    - source: starter_templates/codecrafters.yml
+      target: codecrafters.yml
+    - source: starter_templates/python/app/main.py
+      target: app/main.py
+    - source: starter_templates/python/Dockerfile
+      target: Dockerfile
+    - source: starter_templates/python/your_docker.sh
+      target: your_docker.sh
+  template_attributes:
+    required_executable: "python (3.x)"
+    user_editable_file: "app/main.py"
+
 - language: rust
   file_mappings:
     - source: starter_templates/README.md
