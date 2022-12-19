@@ -95,6 +95,11 @@ stages:
       If you've got any logs or print statements in your code, make sure to remove
       them. The tester can't differentiate between debug logs and the actual
       output!
+      
+      {{#lang_is_rust}}
+      _Note_ This includes output from Cargo that isn't removed by its `--quiet` flag.
+      So keep your build free of warnings to avoid breaking tests. 
+      {{/lang_is_rust}}
 
       Note: The [README]({{readme_url}}) contains setup
       information for this stage and beyond (takes < 5 min).
