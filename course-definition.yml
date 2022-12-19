@@ -143,13 +143,6 @@ stages:
       when executing the command. You'll need to copy the binary being executed
       too.
 
-      {{#lang_is_rust}}
-      At the time of writing this, the implementation of chroot in Rust's standard library
-      ([std::os::unix::fs::chroot](https://doc.rust-lang.org/std/os/unix/fs/fn.chroot.html)) is still a
-      nightly-only experimental API. We've included [libc](https://crates.io/crates/libc) as a dependency
-      instead.
-      {{/lang_is_rust}}
-
       {{#lang_is_nim}}
       Since Nim's [posix module](https://nim-lang.org/docs/posix.html) doesn't
       have `chroot` defined, you'll need to implement this yourself! For
