@@ -11,10 +11,8 @@ Command::new(command)
     // ...
 ```
 
-Now we don't need to access the stdout/stderr of the child process we can just wait for it to finish
-and use its exit code as our exit code.
+Now that we don't need to access the stdout/stderr of the child process, we can just wait for it to finish
 
 ```rust
-let exit_code = child.wait()?.code().unwrap_or(1);
-exit(exit_code);
+child.wait()?;
 ```

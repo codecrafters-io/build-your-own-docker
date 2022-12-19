@@ -1,5 +1,5 @@
 use std::env::args;
-use std::process::{Command, Stdio};
+use std::process::{Command, exit, Stdio};
 use anyhow::{Context, Result};
 
 // Usage: your_docker.sh run <image> <command> <arg1> <arg2> ...
@@ -18,7 +18,7 @@ fn main() -> Result<()> {
             )
         })?;
 
-    child.wait()?;
-
-    Ok(())
+    // The code is not available when terminated by signal so use 1
+    let exit_code = child.wait()?.code().unwrap_or(1);
+    exit(exit_code);
 }
