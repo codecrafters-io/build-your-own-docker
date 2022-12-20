@@ -1,6 +1,6 @@
+use anyhow::{Context, Result};
 use std::env::args;
 use std::process::{Command, Stdio};
-use anyhow::{Context, Result};
 
 // Usage: your_docker.sh run <image> <command> <arg1> <arg2> ...
 fn main() -> Result<()> {
