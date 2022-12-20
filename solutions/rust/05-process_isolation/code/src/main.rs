@@ -1,4 +1,5 @@
 use anyhow::{Context, Result};
+#[cfg(target_os="linux")]
 use libc;
 use std::env::{args, set_current_dir};
 use std::fs::{copy, create_dir, create_dir_all, set_permissions, File, Permissions};
@@ -28,10 +29,9 @@ fn run_child(command: &String, command_args: &[String]) -> Result<i32> {
 
     change_root(temp_dir)?;
 
-    if cfg!(target_os = "linux") {
-        unsafe {
-            libc::unshare(libc::CLONE_NEWPID);
-        }
+    #[cfg(target_os="linux")]
+    unsafe {
+        libc::unshare(libc::CLONE_NEWPID);
     }
 
     let mut child = Command::new(command)

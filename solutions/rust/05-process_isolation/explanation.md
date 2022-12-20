@@ -15,6 +15,3 @@ if cfg!(target_os = "linux") {
 ```
 
 Now that this flag is set, when we launch a new child process it will start in a new process ID namespace.
-
-Note that this stage won't build on a system that is not linux (unless you set up cross compilation). You'll either need
-a Linux environment, using Docker or WSL, or you can use the [CodeCrafters CLI](https://docs.codecrafters.io/cli/installation) to run the tests. 
