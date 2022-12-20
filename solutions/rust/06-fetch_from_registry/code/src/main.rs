@@ -1,23 +1,28 @@
 use anyhow::{Context, Result};
 #[cfg(target_os = "linux")]
 use libc;
+use registry::RegistryClient;
 use std::env::{args, set_current_dir};
 use std::fs::{copy, create_dir, create_dir_all, set_permissions, File, Permissions};
 use std::os::unix::fs::{chroot, PermissionsExt};
 use std::process::{exit, Command, Stdio};
 use tempfile::TempDir;
 
+mod registry;
+
 // Usage: your_docker.sh run <image> <command> <arg1> <arg2> ...
-fn main() -> Result<()> {
+#[tokio::main]
+async fn main() -> Result<()> {
     let args: Vec<_> = args().collect();
+    let image = &args[2];
     let command = &args[3];
     let command_args = &args[4..];
 
-    let exit_code = run_child(command, command_args)?;
+    let exit_code = run_child(image, command, command_args).await?;
     exit(exit_code);
 }
 
-fn run_child(command: &String, command_args: &[String]) -> Result<i32> {
+async fn run_child(image: &String, command: &String, command_args: &[String]) -> Result<i32> {
     // Need the destructor to run so the directory is removed after use. See https://docs.rs/tempfile/3.3.0/tempfile/struct.TempDir.html#resource-leaking
     let temp_dir = tempfile::tempdir()?;
 
@@ -26,6 +31,11 @@ fn run_child(command: &String, command_args: &[String]) -> Result<i32> {
     copy_command(command, &temp_dir)?;
 
     create_dev_null(&temp_dir)?;
+
+    let mut registry_client = RegistryClient::new();
+    registry_client
+        .pull(image, temp_dir.path().to_str().unwrap())
+        .await?;
 
     change_root(temp_dir)?;
 

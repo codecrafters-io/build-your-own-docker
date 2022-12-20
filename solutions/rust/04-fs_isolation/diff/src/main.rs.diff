@@ -1,10 +1,10 @@
-@@ -1,24 +1,71 @@
+@@ -1,24 +1,74 @@
+ use anyhow::{Context, Result};
 -use std::env::args;
 +use std::env::{args, set_current_dir};
-+use std::fs::{copy, create_dir, create_dir_all, File, Permissions, set_permissions};
++use std::fs::{copy, create_dir, create_dir_all, set_permissions, File, Permissions};
 +use std::os::unix::fs::{chroot, PermissionsExt};
- use std::process::{Command, exit, Stdio};
- use anyhow::{Context, Result};
+ use std::process::{exit, Command, Stdio};
 +use tempfile::TempDir;
 
  // Usage: your_docker.sh run <image> <command> <arg1> <arg2> ...
@@ -60,7 +60,10 @@
 +    create_dir(temp_dir.path().join("dev"))?;
 +    set_permissions(temp_dir.path().join("dev"), Permissions::from_mode(0o555))?;
 +    File::create(temp_dir.path().join("dev/null"))?;
-+    set_permissions(temp_dir.path().join("dev/null"), Permissions::from_mode(0o555))?;
++    set_permissions(
++        temp_dir.path().join("dev/null"),
++        Permissions::from_mode(0o555),
++    )?;
 +
 +    Ok(())
 +}

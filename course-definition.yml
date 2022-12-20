@@ -243,9 +243,6 @@ stages:
       Registry API, you'll need to prepend `library/` to the image names.
 
       {{#lang_is_rust}}
-      Since Rust doesn't have an archive extraction utility in its stdlib, you
-      might want to shell out and use `tar`.
-
       You can use the [reqwest](https://crates.io/crates/reqwest) crate to make
       HTTP requests, we've included it in the `Cargo.toml` file. We've also included
       [serde_json](https://crates.io/crates/serde_json) to help with parsing JSON.
