@@ -26,8 +26,6 @@ async fn run_child(image: &String, command: &String, command_args: &[String]) ->
     // Need the destructor to run so the directory is removed after use. See https://docs.rs/tempfile/3.3.0/tempfile/struct.TempDir.html#resource-leaking
     let temp_dir = tempfile::tempdir()?;
 
-    // Don't want '/usr/local/bin/docker-explorer' sending us back to the root of the file system.
-    // i.e. outside the temp dir we just created.
     copy_command(command, &temp_dir)?;
 
     create_dev_null(&temp_dir)?;
@@ -37,7 +35,9 @@ async fn run_child(image: &String, command: &String, command_args: &[String]) ->
         .pull(image, temp_dir.path().to_str().unwrap())
         .await?;
 
-    change_root(temp_dir)?;
+    chroot(temp_dir.path())?;
+    // Move working directory to the new root at the chroot dir
+    set_current_dir("/")?;
 
     #[cfg(target_os = "linux")]
     unsafe {
@@ -60,6 +60,8 @@ async fn run_child(image: &String, command: &String, command_args: &[String]) ->
 }
 
 fn copy_command(command: &String, temp_dir: &TempDir) -> Result<()> {
+    // Don't want '/usr/local/bin/docker-explorer' sending us back to the root of the file system.
+    // i.e. outside the temp dir we just created. So try to get a relative path
     let command_path_relative = command.trim_start_matches("/");
     let target_command = temp_dir.path().join(command_path_relative);
     let target_path = target_command.parent().unwrap();
@@ -77,15 +79,6 @@ fn create_dev_null(temp_dir: &TempDir) -> Result<()> {
         temp_dir.path().join("dev/null"),
         Permissions::from_mode(0o555),
     )?;
-
-    Ok(())
-}
-
-fn change_root(temp_dir: TempDir) -> Result<()> {
-    chroot(temp_dir.path())?;
-
-    // Move working directory to the new root at the chroot dir
-    set_current_dir("/")?;
 
     Ok(())
 }
