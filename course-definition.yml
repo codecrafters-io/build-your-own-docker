@@ -97,7 +97,7 @@ stages:
       output!
       
       {{#lang_is_rust}}
-      _Note_ This includes output from Cargo that isn't removed by its `--quiet` flag.
+      Note: This includes output from Cargo that isn't removed by its `--quiet` flag.
       So keep your build free of warnings to avoid breaking tests. 
       {{/lang_is_rust}}
 
@@ -246,6 +246,10 @@ stages:
       You can use the [reqwest](https://crates.io/crates/reqwest) crate to make
       HTTP requests, we've included it in the `Cargo.toml` file. We've also included
       [serde_json](https://crates.io/crates/serde_json) to help with parsing JSON.
+      
+      Docker image layers are `tar`ed and `gzip`ed. You can uncompress a gzipped layer using [flate2](https://docs.rs/flate2/latest/flate2/)
+      and uncompress the inner tar to the file system using [tar](https://docs.rs/tar/0.4.38/tar/). These have also been
+      included in the `Cargo.toml` file.
       {{/lang_is_rust}}
 
       {{#lang_is_go}}
