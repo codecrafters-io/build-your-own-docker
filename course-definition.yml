@@ -95,6 +95,11 @@ stages:
       If you've got any logs or print statements in your code, make sure to remove
       them. The tester can't differentiate between debug logs and the actual
       output!
+      
+      {{#lang_is_rust}}
+      Note: This includes output from Cargo that isn't removed by its `--quiet` flag.
+      So keep your build free of warnings to avoid breaking tests. 
+      {{/lang_is_rust}}
 
       Note: The [README]({{readme_url}}) contains setup
       information for this stage and beyond (takes < 5 min).
@@ -137,13 +142,6 @@ stages:
       the host machine. Create an empty temporary directory and `chroot` into it
       when executing the command. You'll need to copy the binary being executed
       too.
-
-      {{#lang_is_rust}}
-      At the time of writing this, the implementation of chroot in Rust's standard library
-      ([std::os::unix::fs::chroot](https://doc.rust-lang.org/std/os/unix/fs/fn.chroot.html)) is still a
-      nightly-only experimental API. We've included [libc](https://crates.io/crates/libc) as a dependency
-      instead.
-      {{/lang_is_rust}}
 
       {{#lang_is_nim}}
       Since Nim's [posix module](https://nim-lang.org/docs/posix.html) doesn't
@@ -245,12 +243,13 @@ stages:
       Registry API, you'll need to prepend `library/` to the image names.
 
       {{#lang_is_rust}}
-      Since Rust doesn't have an archive extraction utility in its stdlib, you
-      might want to shell out and use `tar`.
-
       You can use the [reqwest](https://crates.io/crates/reqwest) crate to make
       HTTP requests, we've included it in the `Cargo.toml` file. We've also included
       [serde_json](https://crates.io/crates/serde_json) to help with parsing JSON.
+      
+      Docker image layers are `tar`ed and `gzip`ed. You can uncompress a gzipped layer using [flate2](https://docs.rs/flate2/latest/flate2/)
+      and uncompress the inner tar to the file system using [tar](https://docs.rs/tar/0.4.38/tar/). These have also been
+      included in the `Cargo.toml` file.
       {{/lang_is_rust}}
 
       {{#lang_is_go}}
