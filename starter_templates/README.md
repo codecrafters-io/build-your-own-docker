@@ -1,3 +1,6 @@
+![progress-banner](https://codecrafters.io/landing/images/default_progress_banners/docker.png)
+
+
 This is a starting point for {{language_name}} solutions to the
 ["Build Your Own Docker" Challenge](https://codecrafters.io/challenges/docker).
 
