@@ -10,7 +10,7 @@
       target: Dockerfile
     - source: starter_templates/c/your_docker.sh
       target: your_docker.sh
-    - source: .gitattributes
+    - source: starter_templates/.gitattributes
       target: .gitattributes
   template_attributes:
     required_executable: "gcc"
@@ -28,7 +28,7 @@
       target: Dockerfile
     - source: starter_templates/go/your_docker.sh
       target: your_docker.sh
-    - source: .gitattributes
+    - source: starter_templates/.gitattributes
       target: .gitattributes
   template_attributes:
     required_executable: "go"
@@ -46,7 +46,7 @@
       target: Dockerfile
     - source: starter_templates/php/your_docker.sh
       target: your_docker.sh
-    - source: .gitattributes
+    - source: starter_templates/.gitattributes
       target: .gitattributes
   template_attributes:
     required_executable: "php (7.4)"
@@ -64,7 +64,7 @@
       target: Dockerfile
     - source: starter_templates/nim/your_docker.sh
       target: your_docker.sh
-    - source: .gitattributes
+    - source: starter_templates/.gitattributes
       target: .gitattributes
   template_attributes:
     required_executable: "nim (1.0)"
@@ -82,7 +82,7 @@
       target: Dockerfile
     - source: starter_templates/python/your_docker.sh
       target: your_docker.sh
-    - source: .gitattributes
+    - source: starter_templates/.gitattributes
       target: .gitattributes
   template_attributes:
     required_executable: "python (3.x)"
@@ -106,7 +106,7 @@
       target: Dockerfile
     - source: starter_templates/rust/your_docker.sh
       target: your_docker.sh
-    - source: .gitattributes
+    - source: starter_templates/.gitattributes
       target: .gitattributes
   template_attributes:
     required_executable: "cargo (1.54)"
@@ -128,7 +128,7 @@
       target: Dockerfile
     - source: starter_templates/swift/your_docker.sh
       target: your_docker.sh
-    - source: .gitattributes
+    - source: starter_templates/.gitattributes
       target: .gitattributes
   template_attributes:
     required_executable: "swift"
@@ -146,7 +146,7 @@
       target: Dockerfile
     - source: starter_templates/ruby/your_docker.sh
       target: your_docker.sh
-    - source: .gitattributes
+    - source: starter_templates/.gitattributes
       target: .gitattributes
   template_attributes:
     required_executable: "ruby (2.7)"
