@@ -47,7 +47,6 @@ languages:
     alpha_tester_usernames: ["Terky"]
 
 marketing:
-  description: Learn about chroot, kernel namespaces, the docker registry API and more
   difficulty: medium
   sample_extension_idea_title: "Build from Dockerfile"
   sample_extension_idea_description: "A Docker implementation that can build images from a Dockerfile"
