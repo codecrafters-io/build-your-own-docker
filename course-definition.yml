@@ -60,7 +60,7 @@ marketing:
         mostly a user of docker), digging into the internals blew me away.
 
     - author_name: "Beyang Liu"
-      author_designation: "CTO at SourceGraph"
+      author_description: "CTO at SourceGraph"
       author_avatar: "https://codecrafters.io/images/external/testimonials/beyang-liu.jpeg"
       link: "https://twitter.com/beyang"
       text: |
