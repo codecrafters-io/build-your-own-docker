@@ -19,30 +19,22 @@ completion_percentage: 30
 
 languages:
   - slug: "c"
-    starter_repository_url: "https://github.com/codecrafters-io/docker-starter-c"
 
   - slug: "go"
-    starter_repository_url: "https://github.com/codecrafters-io/docker-starter-go"
 
   - slug: "nim"
-    starter_repository_url: "https://github.com/codecrafters-io/docker-starter-nim"
 
   - slug: "php"
-    starter_repository_url: "https://github.com/codecrafters-io/docker-starter-php"
 
   - slug: "python"
-    starter_repository_url: "https://github.com/codecrafters-io/docker-starter-python"
     release_status: "beta"
 
   - slug: "ruby"
-    starter_repository_url: "https://github.com/codecrafters-io/docker-starter-ruby"
     release_status: "beta"
 
   - slug: "rust"
-    starter_repository_url: "https://github.com/codecrafters-io/docker-starter-rust"
 
   - slug: "swift"
-    starter_repository_url: "https://github.com/codecrafters-io/docker-starter-swift"
     release_status: "alpha"
     alpha_tester_usernames: ["Terky"]
 
@@ -110,7 +102,7 @@ stages:
       them. The tester can't differentiate between debug logs and the actual
       output!
 
-      Note: The [README]({{readme_url}}) contains setup
+      Note: The **README** in your repository contains setup
       information for this stage and beyond (takes < 5 min).
     marketing_md: |
       In this stage, you'll relay the child program's stdout & stderr to the
