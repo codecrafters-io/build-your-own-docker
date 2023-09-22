@@ -3,7 +3,7 @@ name: "Build your own Docker"
 short_name: "Docker"
 release_status: "live"
 
-description_md: |
+description_md: |-
   In this challenge, you'll build a toy Docker implementation that can pull an
   image from [Docker Hub](https://hub.docker.com/) and execute commands in it.
   Along the way, you'll learn about
@@ -12,7 +12,7 @@ description_md: |
   registry API](https://docs.docker.com/registry/spec/api/) and much more.
 
 # Keep this under 70 characters
-short_description_md: |
+short_description_md: |-
   Learn about kernel namespaces, chroot, the registry API and more
 
 completion_percentage: 30
@@ -47,7 +47,7 @@ marketing:
       author_description: "SRE, Coinbase"
       author_avatar: "https://codecrafters.io/images/external/testimonials/raghav-dua.jpeg"
       link: "https://github.com/duaraghav8"
-      text: |
+      text: |-
         I spent a full day on your Docker building course and ended up building the whole thing myself. As a SRE (and
         mostly a user of docker), digging into the internals blew me away.
 
@@ -55,14 +55,14 @@ marketing:
       author_description: "CTO at SourceGraph"
       author_avatar: "https://codecrafters.io/images/external/testimonials/beyang-liu.jpeg"
       link: "https://twitter.com/beyang"
-      text: |
+      text: |-
         CodeCrafters has you build your own version of things like Git and Docker from scratch. A cool way to build a stronger mental model of how those tools work.
 
 stages:
   - slug: "init"
     name: "Execute a program"
     difficulty: very_easy
-    description_md: |
+    description_md: |-
       Your task is to implement a very basic version 
       of [`docker run`](https://docs.docker.com/engine/reference/run/)</a>. It will
       be executed similar to `docker run`:
@@ -77,14 +77,14 @@ stages:
       For now, don't worry about pulling the `ubuntu:latest` image. We will just
       execute a local program for this stage and print its output. You'll work on 
       pulling images from Docker Hub in stage 6.
-    marketing_md: |
+    marketing_md: |-
       In this stage, you'll execute a program using `fork` + `exec`.
     tester_source_code_url: "https://github.com/codecrafters-io/docker-tester/blob/18245703a5beed8ee0a7e1cbb7204a7ee3b3b5d1/internal/stage_basic_exec.go#L9"
 
   - slug: "stdio"
     name: "Wireup stdout & stderr"
     difficulty: easy
-    description_md: |
+    description_md: |-
       You'll now pipe the program's stdout and stderr to the
       parent process.
 
@@ -104,7 +104,7 @@ stages:
 
       Note: The **README** in your repository contains setup
       information for this stage and beyond (takes < 5 min).
-    marketing_md: |
+    marketing_md: |-
       In this stage, you'll relay the child program's stdout & stderr to the
       parent process.
     tester_source_code_url: "https://github.com/codecrafters-io/docker-tester/blob/18245703a5beed8ee0a7e1cbb7204a7ee3b3b5d1/internal/stage_stdio.go#L9"
@@ -112,7 +112,7 @@ stages:
   - slug: "exit_code"
     name: "Handle exit codes"
     difficulty: easy
-    description_md: |
+    description_md: |-
       In this stage, you'll need to relay the program's exit code to the parent
       process.
 
@@ -127,7 +127,7 @@ stages:
       ```
       mydocker run ubuntu:latest /usr/local/bin/docker-explorer exit 1
       ```
-    marketing_md: |
+    marketing_md: |-
       In this stage, you'll wait for the child program's exit code and exit with
       it.
     tester_source_code_url: "https://github.com/codecrafters-io/docker-tester/blob/18245703a5beed8ee0a7e1cbb7204a7ee3b3b5d1/internal/stage_exit_code.go#L9"
@@ -135,7 +135,7 @@ stages:
   - slug: "fs_isolation"
     name: "Filesystem isolation"
     difficulty: medium
-    description_md: |
+    description_md: |-
       In the previous stage, we executed a program that existed locally on our
       machine. This program had write access to the whole filesystem, which
       means that it could do **dangerous** things!
@@ -182,7 +182,7 @@ stages:
       ```
       mydocker run ubuntu:latest /usr/local/bin/docker-explorer ls /some_dir
       ```
-    marketing_md: |
+    marketing_md: |-
       In this stage, you'll restrict a program's access to the host filesystem
       by using [chroot](https://en.wikipedia.org/wiki/Chroot).
     tester_source_code_url: "https://github.com/codecrafters-io/docker-tester/blob/18245703a5beed8ee0a7e1cbb7204a7ee3b3b5d1/internal/stage_fs_isolation.go#L8"
@@ -190,7 +190,7 @@ stages:
   - slug: "process_isolation"
     name: "Process isolation"
     difficulty: medium
-    description_md: |
+    description_md: |-
       In the previous stage, we guarded against malicious activity by
       restricting an executable's access to the filesystem.
 
@@ -214,7 +214,7 @@ stages:
       ```
       mydocker run ubuntu:latest /usr/local/bin/docker-explorer mypid
       ```
-    marketing_md: |
+    marketing_md: |-
       In this stage, you'll restrict a program's access to the host's process
       tree by using [PID
       namespaces](http://man7.org/linux/man-pages/man7/pid_namespaces.7.html).
@@ -223,7 +223,7 @@ stages:
   - slug: "fetch_from_registry"
     name: "Fetch an image from the Docker Registry"
     difficulty: hard
-    description_md: |
+    description_md: |-
       Your docker implementation can now execute a program with a fair degree of
       isolation - it can't modify files or interact with processes running on
       the host.
@@ -279,7 +279,7 @@ stages:
 
       You can assume that `libcurl` is available in the build environment.
       {{/lang_is_c}}
-    marketing_md: |
+    marketing_md: |-
       In this stage, you'll fetch an image from Docker Hub and execute a command
       in it. You'll need to use [the Docker Registry
       API](https://docs.docker.com/registry/spec/api/) for this.
