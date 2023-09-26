@@ -63,7 +63,7 @@ stages:
     name: "Execute a program"
     difficulty: very_easy
     description_md: |-
-      Your task is to implement a very basic version 
+      Your task is to implement a very basic version
       of [`docker run`](https://docs.docker.com/engine/reference/run/)</a>. It will
       be executed similar to `docker run`:
 
@@ -75,7 +75,7 @@ stages:
       commands like `echo` and `ls`.
 
       For now, don't worry about pulling the `ubuntu:latest` image. We will just
-      execute a local program for this stage and print its output. You'll work on 
+      execute a local program for this stage and print its output. You'll work on
       pulling images from Docker Hub in stage 6.
     marketing_md: |-
       In this stage, you'll execute a program using `fork` + `exec`.
@@ -222,6 +222,7 @@ stages:
 
   - slug: "fetch_from_registry"
     name: "Fetch an image from the Docker Registry"
+    should_skip_previous_stages_for_test_run: true
     difficulty: hard
     description_md: |-
       Your docker implementation can now execute a program with a fair degree of
