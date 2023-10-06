@@ -7,7 +7,5 @@
 # DON'T EDIT THIS!
 set -e
 
-ls -alh
-
 mvn -B --quiet package -Ddir=/tmp/codecrafters-docker-target
 exec java -jar /tmp/codecrafters-docker-target/java_docker.jar "$@"
