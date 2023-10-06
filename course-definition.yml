@@ -36,7 +36,6 @@ languages:
 
   - slug: "java"
     release_status: "alpha"
-    alpha_tester_usernames: ["anugrahsinghal"]
 
   - slug: "swift"
     release_status: "alpha"

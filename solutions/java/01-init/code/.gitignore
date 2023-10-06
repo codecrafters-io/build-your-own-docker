@@ -1,0 +1,4 @@
+java_docker.jar
+target/*
+target/
+.idea/
