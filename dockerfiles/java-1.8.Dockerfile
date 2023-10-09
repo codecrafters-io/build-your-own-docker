@@ -7,10 +7,15 @@ ARG docker_explorer_version=v18
 RUN curl --fail -Lo /usr/local/bin/docker-explorer https://github.com/codecrafters-io/docker-explorer/releases/download/${docker_explorer_version}/${docker_explorer_version}_linux_amd64
 RUN chmod +x /usr/local/bin/docker-explorer
 
+COPY pom.xml /app/pom.xml
+
+WORKDIR /app
+
 # Download dependencies
-RUN mv /app/target /app-cached
+RUN mvn -B package -Ddir=/tmp/codecrafters-docker-target
 
 # Cache dependencies
+RUN mkdir -p /app-cached
 RUN mv /app/target /app-cached
 
 # Pre-compile steps
