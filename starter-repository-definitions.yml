@@ -86,6 +86,8 @@
       target: Dockerfile
     - source: starter_templates/python/your_docker.sh
       target: your_docker.sh
+    - source: starter_templates/python/.gitignore
+      target: .gitignore
     - source: starter_templates/.gitattributes
       target: .gitattributes
   template_attributes:
