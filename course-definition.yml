@@ -3,13 +3,25 @@ name: "Build your own Docker"
 short_name: "Docker"
 release_status: "live"
 
+# This is shown on the course overview page. Markdown supported, recommended length ~40 words.
+#
+# Recommended format:
+#
+# > ABC is <whatever>. In this challenge, you'll build your own ABC that's capable of D, E, F and G.
+# >
+# > Along the way, we'll learn about X, Y, Z and more.
+#
+# Example:
+#
+# > Redis is an in-memory data structure store often used as a database, cache, message broken and streaming engine. In this challenge
+# > you'll build your own Redis server that is capable of serving basic commands, reading RDB files and more.
+# >
+# > Along the way, you'll learn about TCP servers, the Redis Protocol and more.
 description_md: |-
-  In this challenge, you'll build a toy Docker implementation that can pull an
-  image from [Docker Hub](https://hub.docker.com/) and execute commands in it.
-  Along the way, you'll learn about
-  [chroot](https://en.wikipedia.org/wiki/Chroot), [kernel
-  namespaces](https://en.wikipedia.org/wiki/Linux_namespaces), the [docker
-  registry API](https://docs.docker.com/registry/spec/api/) and much more.
+  Docker is a tool used to build & run applications in containers. In this challenge, you'll build
+  your own Docker implementation that can pull an image from Docker Hub and execute commands in it.
+
+  Along the way, you'll learn about chroot, kernel namespaces, the Docker registry API and much more.
 
 # Keep this under 70 characters
 short_description_md: |-
