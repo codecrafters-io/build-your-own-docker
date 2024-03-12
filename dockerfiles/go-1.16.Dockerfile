@@ -1,6 +1,6 @@
 FROM golang:1.16-alpine
 
-RUN apk add curl
+RUN apk add --no-cache --upgrade 'curl>=7.66'
 
 # Download docker-explorer
 ARG docker_explorer_version=v18

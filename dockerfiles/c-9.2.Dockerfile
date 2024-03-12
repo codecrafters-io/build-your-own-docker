@@ -1,9 +1,9 @@
 FROM n0madic/alpine-gcc:9.2.0
 
-RUN apk add --update-cache --upgrade curl
+RUN apk add --no-cache 'curl>=7.66'
 
 # For making HTTP requests using libcurl
-RUN apk add --update-cache --upgrade curl-dev
+RUN apk add --no-cache --upgrade 'curl-dev>=7.66'
 
 # Download docker-explorer
 ARG docker_explorer_version=v18
