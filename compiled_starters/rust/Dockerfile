@@ -17,7 +17,7 @@ RUN cargo build --release --target-dir=/tmp/codecrafters-docker-target
 RUN cargo clean -p docker-starter-rust --release --target-dir=/tmp/codecrafters-docker-target
 
 # Grab the real code
-ADD . /app
+COPY . /app
 
 RUN sed -i -e 's/\r$//' /app/your_docker.sh
 
