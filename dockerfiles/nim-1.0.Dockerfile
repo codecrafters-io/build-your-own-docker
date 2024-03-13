@@ -1,6 +1,6 @@
 FROM nimlang/nim:1.0.6-alpine
 
-RUN apk add curl
+RUN apk add --no-cache 'curl>=7.66'
 
 # Download docker-explorer
 ARG docker_explorer_version=v18

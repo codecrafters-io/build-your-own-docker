@@ -1,6 +1,9 @@
 FROM swift:5.6.1-focal
 
-RUN apt-get update && apt-get install -y curl
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y curl=7.68.* && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Download docker-explorer
 ARG docker_explorer_version=v18
