@@ -1,6 +1,5 @@
 ![progress-banner](https://codecrafters.io/landing/images/default_progress_banners/docker.png)
 
-
 This is a starting point for {{language_name}} solutions to the
 ["Build Your Own Docker" Challenge](https://codecrafters.io/challenges/docker).
 
@@ -15,11 +14,11 @@ registry API](https://docs.docker.com/registry/spec/api/) and much more.
 
 # Passing the first stage
 
-The entry point for your Docker implementation is `{{ user_editable_file }}`. 
+The entry point for your Docker implementation is `{{ user_editable_file }}`.
 Study and uncomment the relevant code, and push your changes to pass the first stage:
 
-``` sh
-git add . 
+```sh
+git add .
 git commit -m "pass 1st stage" # any msg
 git push origin master
 ```
@@ -31,14 +30,14 @@ That's all!
 Note: This section is for stages 2 and beyond.
 
 You'll use linux-specific syscalls in this challenge. so we'll run
-your code _inside_ a Docker container. 
+your code _inside_ a Docker container.
 
-Please ensure you have 
+Please ensure you have
 [Docker installed](https://docs.docker.com/get-docker/) locally.
 
 Next, add a [shell alias](https://shapeshed.com/unix-alias/):
 
-``` sh
+```sh
 alias mydocker='docker build -t mydocker . && docker run --cap-add="SYS_ADMIN" mydocker'
 ```
 
@@ -47,10 +46,9 @@ alias mydocker='docker build -t mydocker . && docker run --cap-add="SYS_ADMIN" m
 You can now execute your program like this:
 
 ```sh
-mydocker run ubuntu:latest /usr/local/bin/docker-explorer echo hey
+mydocker run alpine:latest /usr/local/bin/docker-explorer echo hey
 ```
 
 {{# language_is_rust }}This command compiles your
 Rust project, so it might be slow the first time you run it. Subsequent runs
 will be fast.{{/ language_is_rust}}
-

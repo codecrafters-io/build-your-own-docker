@@ -80,13 +80,13 @@ stages:
       be executed similar to `docker run`:
 
       ```
-      mydocker run ubuntu:latest /usr/local/bin/docker-explorer echo hey
+      mydocker run alpine:latest /usr/local/bin/docker-explorer echo hey
       ```
 
       [docker-explorer](https://github.com/codecrafters-io/docker-explorer) is a custom test program that exposes
       commands like `echo` and `ls`.
 
-      For now, don't worry about pulling the `ubuntu:latest` image. We will just
+      For now, don't worry about pulling the `alpine:latest` image. We will just
       execute a local program for this stage and print its output. You'll work on
       pulling images from Docker Hub in stage 6.
     marketing_md: |-
@@ -103,7 +103,7 @@ stages:
       Like the last stage, the tester will run your program like this:
 
       ```
-      mydocker run ubuntu:latest /usr/local/bin/docker-explorer echo hey
+      mydocker run alpine:latest /usr/local/bin/docker-explorer echo hey
       ```
 
       To test this behaviour locally, you could use the `echo` + `echo_stderr`
@@ -137,7 +137,7 @@ stages:
       Just like the previous stage, the tester will run your program like this:
 
       ```
-      mydocker run ubuntu:latest /usr/local/bin/docker-explorer exit 1
+      mydocker run alpine:latest /usr/local/bin/docker-explorer exit 1
       ```
     marketing_md: |-
       In this stage, you'll wait for the child program's exit code and exit with
@@ -192,7 +192,7 @@ stages:
       Just like the previous stage, the tester will run your program like this:
 
       ```
-      mydocker run ubuntu:latest /usr/local/bin/docker-explorer ls /some_dir
+      mydocker run alpine:latest /usr/local/bin/docker-explorer ls /some_dir
       ```
     marketing_md: |-
       In this stage, you'll restrict a program's access to the host filesystem
@@ -224,7 +224,7 @@ stages:
       Just like the previous stage, the tester will run your program like this:
 
       ```
-      mydocker run ubuntu:latest /usr/local/bin/docker-explorer mypid
+      mydocker run alpine:latest /usr/local/bin/docker-explorer mypid
       ```
     marketing_md: |-
       In this stage, you'll restrict a program's access to the host's process
@@ -257,13 +257,13 @@ stages:
       The tester will run your program like this:
 
       ```
-      mydocker run ubuntu:latest /bin/echo hey
+      mydocker run alpine:latest /bin/echo hey
       ```
 
       The image used will be an [official
       image](https://docs.docker.com/docker-hub/official_images/) from Docker
       Hub. For example: [`alpine:latest`](https://hub.docker.com/_/alpine),
-      [`ubuntu:latest`](https://hub.docker.com/_/ubuntu),
+      [`alpine:latest`](https://hub.docker.com/_/alpine),
       [`busybox:latest`](https://hub.docker.com/_/busybox). When interacting with the
       Registry API, you'll need to prepend `library/` to the image names.
 
