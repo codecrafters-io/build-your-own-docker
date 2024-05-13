@@ -48,5 +48,5 @@ alias mydocker='docker build -t mydocker . && docker run --cap-add="SYS_ADMIN" m
 You can now execute your program like this:
 
 ```sh
-mydocker run ubuntu:latest /usr/local/bin/docker-explorer echo hey
+mydocker run alpine:latest /usr/local/bin/docker-explorer echo hey
 ```
