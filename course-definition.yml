@@ -71,8 +71,7 @@ marketing:
         CodeCrafters has you build your own version of things like Git and Docker from scratch. A cool way to build a stronger mental model of how those tools work.
 
 stages:
-  - legacy_slug: "init"
-    slug: "je9"
+  - slug: "je9"
     name: "Execute a program"
     difficulty: very_easy
     description_md: |-
@@ -94,8 +93,7 @@ stages:
       In this stage, you'll execute a program using `fork` + `exec`.
     tester_source_code_url: "https://github.com/codecrafters-io/docker-tester/blob/18245703a5beed8ee0a7e1cbb7204a7ee3b3b5d1/internal/stage_basic_exec.go#L9"
 
-  - legacy_slug: "stdio"
-    slug: "kf3"
+  - slug: "kf3"
     name: "Wireup stdout & stderr"
     difficulty: easy
     description_md: |-
@@ -123,8 +121,7 @@ stages:
       parent process.
     tester_source_code_url: "https://github.com/codecrafters-io/docker-tester/blob/18245703a5beed8ee0a7e1cbb7204a7ee3b3b5d1/internal/stage_stdio.go#L9"
 
-  - legacy_slug: "exit_code"
-    slug: "cn8"
+  - slug: "cn8"
     name: "Handle exit codes"
     difficulty: easy
     description_md: |-
@@ -147,8 +144,7 @@ stages:
       it.
     tester_source_code_url: "https://github.com/codecrafters-io/docker-tester/blob/18245703a5beed8ee0a7e1cbb7204a7ee3b3b5d1/internal/stage_exit_code.go#L9"
 
-  - legacy_slug: "fs_isolation"
-    slug: "if6"
+  - slug: "if6"
     name: "Filesystem isolation"
     difficulty: medium
     description_md: |-
@@ -203,8 +199,7 @@ stages:
       by using [chroot](https://en.wikipedia.org/wiki/Chroot).
     tester_source_code_url: "https://github.com/codecrafters-io/docker-tester/blob/18245703a5beed8ee0a7e1cbb7204a7ee3b3b5d1/internal/stage_fs_isolation.go#L8"
 
-  - legacy_slug: "process_isolation"
-    slug: "lu7"
+  - slug: "lu7"
     name: "Process isolation"
     difficulty: medium
     description_md: |-
@@ -237,8 +232,7 @@ stages:
       namespaces](http://man7.org/linux/man-pages/man7/pid_namespaces.7.html).
     tester_source_code_url: "https://github.com/codecrafters-io/docker-tester/blob/18245703a5beed8ee0a7e1cbb7204a7ee3b3b5d1/internal/stage_process_isolation.go#L5"
 
-  - legacy_slug: "fetch_from_registry"
-    slug: "hs1"
+  - slug: "hs1"
     name: "Fetch an image from the Docker Registry"
     should_skip_previous_stages_for_test_run: true
     difficulty: hard
