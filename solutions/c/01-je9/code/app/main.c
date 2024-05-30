@@ -6,6 +6,7 @@
 int main(int argc, char *argv[]) {
 	// Disable output buffering
 	setbuf(stdout, NULL);
+ 	setbuf(stderr, NULL);
 
 	char *command = argv[3];
 	int child_pid = fork();
