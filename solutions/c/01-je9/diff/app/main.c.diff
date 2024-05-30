@@ -1,4 +1,4 @@
-@@ -1,32 +1,27 @@
+@@ -1,33 +1,28 @@
  #include <stdio.h>
  #include <sys/wait.h>
  #include <unistd.h>
@@ -7,6 +7,7 @@
  int main(int argc, char *argv[]) {
  	// Disable output buffering
  	setbuf(stdout, NULL);
+  	setbuf(stderr, NULL);
 
 -	// You can use print statements as follows for debugging, they'll be visible when running tests.
 -	printf("Logs from your program will appear here!\n");
