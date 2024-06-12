@@ -1,7 +1,7 @@
 slug: "docker"
 name: "Build your own Docker"
 short_name: "Docker"
-release_status: "live"
+release_status: "deprecated"
 
 # This is shown on the course overview page. Markdown supported, recommended length ~40 words.
 #
