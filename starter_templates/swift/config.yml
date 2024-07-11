@@ -1,0 +1,3 @@
+attributes:
+  required_executable: swift
+  user_editable_file: Sources/swift-docker-challenge/Main.swift
