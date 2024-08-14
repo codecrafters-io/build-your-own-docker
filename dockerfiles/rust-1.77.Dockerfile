@@ -18,7 +18,7 @@ RUN cargo clean -p docker-starter-rust --release --target-dir=/tmp/codecrafters-
 
 RUN rm -rf /app/src
 
-RUN echo "cd \${CODECRAFTERS_SUBMISSION_DIR} && cargo build --release --target-dir=/tmp/codecrafters-docker-target --manifest-path Cargo.toml" > /codecrafters-precompile.sh
+RUN echo "cd \${CODECRAFTERS_REPOSITORY_DIR} && cargo build --release --target-dir=/tmp/codecrafters-docker-target --manifest-path Cargo.toml" > /codecrafters-precompile.sh
 RUN chmod +x /codecrafters-precompile.sh
 
 ENV CODECRAFTERS_DEPENDENCY_FILE_PATHS="Cargo.toml,Cargo.lock"
