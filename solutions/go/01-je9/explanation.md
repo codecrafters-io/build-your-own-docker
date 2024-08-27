@@ -4,12 +4,6 @@ Study and uncomment the relevant code:
 
 ```go
 // Uncomment this block to pass the first stage!
-"os"
-"os/exec"
-```
-
-```go
-// Uncomment this block to pass the first stage!
 
 command := os.Args[3]
 args := os.Args[4:len(os.Args)]
