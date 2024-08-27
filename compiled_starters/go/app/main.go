@@ -2,10 +2,13 @@ package main
 
 import (
 	"fmt"
-	// Uncomment this block to pass the first stage!
-	// "os"
-	// "os/exec"
+	"os"
+	"os/exec"
 )
+
+// Ensures gofmt doesn't remove the imports above (feel free to remove this!)
+var _ = os.Args
+var _ = exec.Command
 
 // Usage: your_docker.sh run <image> <command> <arg1> <arg2> ...
 func main() {
