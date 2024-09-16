@@ -1,3 +1,4 @@
+#[allow(unused_imports)]
 use anyhow::{Context, Result};
 
 // Usage: your_docker.sh run <image> <command> <arg1> <arg2> ...
