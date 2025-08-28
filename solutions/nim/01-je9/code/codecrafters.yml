@@ -8,4 +8,4 @@ debug: false
 # on Codecrafters.
 #
 # Available versions: nim-1.0
-language_pack: nim-1.0
+buildpack: nim-1.0

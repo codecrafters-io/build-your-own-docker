@@ -8,4 +8,4 @@ debug: false
 # on Codecrafters.
 #
 # Available versions: c-9.2
-language_pack: c-9.2
+buildpack: c-9.2
