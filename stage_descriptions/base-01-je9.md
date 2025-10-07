@@ -1,6 +1,7 @@
 Your task is to implement a very basic version
-of [`docker run`](https://docs.docker.com/engine/reference/run/)</a>. It will
-be executed similar to `docker run`:
+of [`docker run`](https://docs.docker.com/engine/reference/run/)</a>.
+
+It will be executed similar to `docker run`:
 
 ```
 mydocker run alpine:latest /usr/local/bin/docker-explorer echo hey
