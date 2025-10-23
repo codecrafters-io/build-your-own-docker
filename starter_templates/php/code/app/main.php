@@ -9,7 +9,7 @@ while (ob_get_level() !== 0) {
 // You can use print statements as follows for debugging, they'll be visible when running tests.
 echo "Logs from your program will appear here!\n";
 
-// Uncomment this to pass the first stage.
+// TODO: Uncomment the code below to pass the first stage.
 // $child_pid = pcntl_fork();
 // if ($child_pid == -1) {
 //   echo "Error forking!";

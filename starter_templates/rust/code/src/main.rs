@@ -5,7 +5,7 @@ fn main() -> Result<()> {
     // You can use print statements as follows for debugging, they'll be visible when running tests.
     println!("Logs from your program will appear here!");
 
-    // Uncomment this block to pass the first stage!
+    // TODO: Uncomment the code below to pass the first stage!
     // let args: Vec<_> = std::env::args().collect();
     // let command = &args[3];
     // let command_args = &args[4..];

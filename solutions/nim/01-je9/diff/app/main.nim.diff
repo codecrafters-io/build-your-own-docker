@@ -10,7 +10,7 @@
 +let command = commandLineParams()[2]
 +let args = commandLineParams()[3..^1]
 
--# Uncomment this block to pass the first stage
+-# TODO: Uncomment the code below to pass the first stage
 -#
 -# let command = commandLineParams()[2]
 -# let args = commandLineParams()[3..^1]
