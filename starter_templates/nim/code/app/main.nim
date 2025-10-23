@@ -7,7 +7,7 @@ from osproc import execProcess
 # You can use print statements as follows for debugging, they'll be visible when running tests.
 echo "Logs from your program will appear here"
 
-# Uncomment this block to pass the first stage
+# Uncomment the code below to pass the first stage the first stage
 #
 # let command = commandLineParams()[2]
 # let args = commandLineParams()[3..^1]

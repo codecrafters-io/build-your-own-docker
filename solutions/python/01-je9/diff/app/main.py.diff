@@ -9,7 +9,7 @@
 +    command = sys.argv[3]
 +    args = sys.argv[4:]
 
--    # Uncomment this block to pass the first stage
+-    # Uncomment the code below to pass the first stage the first stage
 -    #
 -    # command = sys.argv[3]
 -    # args = sys.argv[4:]
