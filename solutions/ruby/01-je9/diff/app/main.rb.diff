@@ -6,7 +6,7 @@
 +command = ARGV[2]
 +args = ARGV[3..]
 
--# Uncomment this block to pass the first stage
+-# Uncomment the code below to pass the first stage
 -#
 -# command = ARGV[2]
 -# args = ARGV[3..]

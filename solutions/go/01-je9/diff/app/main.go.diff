@@ -18,7 +18,7 @@
 +	command := os.Args[3]
 +	args := os.Args[4:len(os.Args)]
 
--	// Uncomment this block to pass the first stage!
+-	// Uncomment the code below to pass the first stage!
 -	//
 -	// command := os.Args[3]
 -	// args := os.Args[4:len(os.Args)]
