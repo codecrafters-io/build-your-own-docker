@@ -18,10 +18,14 @@ release_status: "deprecated"
 # >
 # > Along the way, you'll learn about TCP servers, the Redis Protocol and more.
 description_md: |-
-  Docker is a tool used to build & run applications in containers. In this challenge, you'll build
-  your own Docker implementation that can pull an image from Docker Hub and execute commands in it.
+  A container gives a running program its own view of files and process IDs.
 
-  Along the way, you'll learn about chroot, kernel namespaces, the Docker registry API and much more.
+  Linux can make a directory appear as a program's `/` and give that program process ID `1` in an
+  isolated numbering space. An image supplies the files for that directory. In this challenge, you'll
+  build a small Docker-style runner that applies these controls, relays command output and exit codes,
+  and pulls images from Docker Hub.
+
+  You'll practice child-process management, filesystem path resolution, PID namespaces and HTTP authentication.
 
 # Keep this under 70 characters
 short_description_md: |-
