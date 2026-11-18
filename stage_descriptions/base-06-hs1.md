@@ -1,55 +1,87 @@
-Your docker implementation can now execute a program with a fair degree of
-isolation - it can't modify files or interact with processes running on
-the host.
+Your runner can isolate a local command. In this stage, you'll fetch a public
+image from [Docker Hub](https://hub.docker.com/) and execute a command using its
+files.
 
-In this stage, you'll use [the Docker registry
-API](https://docs.docker.com/registry/spec/api/) to fetch the contents of
-a public image on [Docker Hub](https://hub.docker.com/) and then execute a
-command within it.
+### Images, manifests and layers
 
-You'll need to:
+An **image** supplies the files a container needs. A registry stores images for
+download through the
+[Registry HTTP API](https://distribution.github.io/distribution/spec/api/).
 
-- Do a small [authentication dance](https://docs.docker.com/registry/spec/auth/token/)
-- Fetch the [image manifest](https://docs.docker.com/registry/spec/api/#pulling-an-image-manifest)
-- [Pull layers](https://docs.docker.com/registry/spec/api/#pulling-a-layer) of an image and extract them to the chroot directory
+An
+[image manifest](https://distribution.github.io/distribution/spec/api/#pulling-an-image-manifest)
+is a JSON description of an image. Its `layers` array identifies filesystem
+archives by **digest**, a content-derived identifier such as a SHA-256 hash. The
+layers are listed from base to top. Their combined contents populate the root
+directory you already know how to use.
 
-The base URL for Docker Hub's public registry is `registry.hub.docker.com`.
+A tag can instead identify a multi-platform index or manifest list. Its
+`manifests` array references image manifests for different operating systems and
+CPU architectures. Use the image manifest that matches the environment where the
+command will execute.
 
-The tester will run your program like this:
+### Registry names and authorization
+
+Docker Hub's HTTPS registry host is `registry.hub.docker.com`.
+[Official images](https://docs.docker.com/docker-hub/official_images/) such as
+[`alpine:latest`](https://hub.docker.com/_/alpine) and
+[`busybox:latest`](https://hub.docker.com/_/busybox) use the `library/`
+namespace in API requests. For example, `alpine:latest` means repository
+`library/alpine` and tag `latest`. An omitted tag also means `latest`.
+
+Public pulls use
+[token authorization](https://distribution.github.io/distribution/spec/auth/token/).
+The token grants permission to pull a repository. A `401` response's
+`WWW-Authenticate` header supplies the token endpoint's `realm` URL, the
+registry's `service` name and the repository access `scope`.
+
+The token endpoint accepts `service` and `scope` as GET query parameters. Its
+JSON response contains a `token` or `access_token` value for the
+`Authorization: Bearer <token>` request header.
+
+The registry exposes these resources:
+
+| Resource                                                                            | Request path                                 |
+| ----------------------------------------------------------------------------------- | -------------------------------------------- |
+| Manifest by tag or digest                                                           | `GET /v2/<repository>/manifests/<reference>` |
+| [Layer blob](https://distribution.github.io/distribution/spec/api/#pulling-a-layer) | `GET /v2/<repository>/blobs/<digest>`        |
+
+Layer downloads can redirect to another URL. Their contents are tar archives,
+often compressed. Applying the layers in manifest order supplies the executable
+and its supporting files inside the new root.
+
+{{#lang_is_rust}} The starter's `Cargo.toml` includes
+[`reqwest`](https://crates.io/crates/reqwest) for HTTP,
+[`serde_json`](https://crates.io/crates/serde_json) for JSON, and `tar` and
+`flate2` for archives and decompression. Calling the `tar` command is also an
+option for extraction. {{/lang_is_rust}}
+
+{{#lang_is_go}} Go's [`archive/tar`](https://pkg.go.dev/archive/tar) package can
+read tar entries. You can also call the `tar` command to extract layers.
+{{/lang_is_go}}
+
+{{#lang_is_nim}} Calling the `tar` command is an option for extracting layers.
+{{/lang_is_nim}}
+
+{{#lang_is_c}} Calling the `tar` command is an option for extracting layers.
+`libcurl` is available in the build environment for HTTP requests.
+{{/lang_is_c}}
+
+### Tests
+
+The tester runs commands using files from a downloaded official image. With the
+**README**'s local alias, an example is:
 
 ```
 mydocker run alpine:latest /bin/echo hey
 ```
 
-The image used will be an [official
-image](https://docs.docker.com/docker-hub/official_images/) from Docker
-Hub. For example: [`alpine:latest`](https://hub.docker.com/_/alpine),
-[`alpine:latest`](https://hub.docker.com/_/alpine),
-[`busybox:latest`](https://hub.docker.com/_/busybox). When interacting with the
-Registry API, you'll need to prepend `library/` to the image names.
+The expected stdout is:
 
-{{#lang_is_rust}}
-Since Rust doesn't have an archive extraction utility in its stdlib, you
-might want to shell out and use `tar`.
+```text
+hey
+```
 
-You can use the [reqwest](https://crates.io/crates/reqwest) crate to make
-HTTP requests, we've included it in the `Cargo.toml` file. We've also included
-[serde_json](https://crates.io/crates/serde_json) to help with parsing JSON.
-{{/lang_is_rust}}
-
-{{#lang_is_go}}
-Since Go doesn't have an archive extraction utility in its stdlib, you
-might want to shell out and use `tar`.
-{{/lang_is_go}}
-
-{{#lang_is_nim}}
-Since Nim doesn't have an archive extraction utility in its stdlib, you
-might want to shell out and use `tar`.
-{{/lang_is_nim}}
-
-{{#lang_is_c}}
-Since C doesn't have an archive extraction utility in its stdlib, you
-might want to shell out and use `tar`.
-
-You can assume that `libcurl` is available in the build environment.
-{{/lang_is_c}}
+Preserve the final newline, separate output streams and the command's exit code.
+The tester also uses an image name without an explicit tag and inspects the
+image's root-directory contents.
